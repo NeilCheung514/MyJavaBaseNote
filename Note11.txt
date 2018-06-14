@@ -1,0 +1,35 @@
+在Java中无论什么类型最终都能归到基本类型
+
+当在静态代码块中利用类名调用本类中的静态变量的时候,会把静态变量的现有值给取出,然后利用取出值进行运算
+
+复习:
+	1.Object:顶级父类---所有的类都是Object的子类,所有的类的对象都可以用Object对象来接住---现阶段可以利用Object来接收其它的匿名内部类产生的对象.
+		// 在JDK1.7,部分匿名内部类写法
+		Object a = new A(){
+			public void m(){
+				System.out.println("hhhhh");
+			}
+		};
+		// 在JDK1.8,部分匿名内部类写法
+		A a = () -> System.out.println("hhhhhhh"); // Lambda表达式-不能用Object来接住
+
+		getClass---获取对象的实际类型
+		equals---比较两个对象是否一致,默认比较两个对象的地址是否一致
+		toString---打印一个对象的时候默认调用了对象的toString
+	
+	2.String:代表字符串的类---字符串是一个常量,可以被共享---字符串在底层是以一个不可变的数组来存储的
+
+		String str = new String("xyz"); --- 2
+		String()
+		String(String)
+		String(char[])
+		String(char[], int, int)
+		charAt(int)---获取指定位置的字符
+		toCharArray()---转换成字符数组
+		length()---获取字符串长度
+		subString(int, int)---
+		compareTo(String)---比较字符串大小
+		toUpperCase()---转换成大写
+		toLowerCase()---转换成小写
+
+		String str = "abc"; str.charAt(5); --- StringIndexOutBoundsException

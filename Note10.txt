@@ -1,0 +1,63 @@
+复习:
+	1.内部类:方法/局部内部类、成员内部类、静态内部类---匿名内部类---除了静态内部类以外,其余的内部类中都不允许定义静态便能量和静态方法;除了静态内部类以外,其余的内部类都允许使用当前外部类的成员属性和成员方法;方法内部类如果使用当前方法中的数据,这个数据需要是一个常量---类比方法先加载
+	2.包:package声明,import导包.---java.lang、java.util
+	3.垃圾就回收机制:针对堆内存---新生代(伊甸园区, 幸存区),老生代---初代回收,完全回收
+	4.类加载机制:加载(先加载外部类,然后再加载内部类)-校验-准备(为类变量分配空间并初始化)-解析(引用替换---常量和符号进行替换)-初始化;类加载器---启动、扩展、应用---双亲委派机制
+
+API:
+	Object
+		Object是Java中的顶级父类---也是Java中唯一一个没有父类的类
+	重要方法
+		clone()---克隆出一个和原有对象的属性值一样的新对象---如果一个类产生的对象想要被克隆,那么这个类必须一个接口Cloneable---这个接口仅仅标志这个类的对象可以被克隆
+		finalize()---这个方法通知GC回收垃圾---但是GC不一定运行---System.gc()
+		getClass()---获取对象的实际类型而不是声明类型
+		toString()---将对象转化成字符串,默认输出的是地址---当打印一个对象的时候实际上是默认调用了这个对象的toString方法
+		equals(Object o)---比较两个个对象是否相等---默认比较两个对象的地址是否一致,但实际开发中,往往会手动重写equals方法---地址、参数、类型、属性值---要求掌握两到三个属性的判断
+
+	String
+		最终类---字符串是一个常量,定义好之后不能改变;因为字符串是常量,所以可以被共享
+		字符串在Java底层是以数组形式存储的.
+		String str = "abc" -> final char[] data = {'a', 'b', 'c'}
+		String str = "a"; str += "b"; -> new StringBuilder(str).append("b").toString(); -> new String("ab");
+
+		charAt() --- 获取指定位置上的字符
+		toCharArray() --- 将字符串转换成字符数组
+		length() ---获取字符串长度
+		String(char[] c) --- 将字符数组c转换成字符串
+		String(char[] c, int num1, int num2) --- 将字符数组c从下标num1开始取num2位转换成字符串
+		subString(int num1, int num2) --- 将字符串从第num1位截取至第num2位
+		subString(int num) --- 将字符串从第num位开始截取至末尾
+		compareTo(String str) --- 比较字符串和字符串str大小(字符串排序)
+		compareToIgnoreCase(String str) --- 比较字符串和字符串str大小,不考虑大小写
+		toUpperCase() --- 将字符串转化成大写
+		toLowerCase() --- 将字符串转化成小写
+
+		注意:String类中提供了一系列的操作字符串但是不改变原串的方法,基本都是产生一个新的字符串.
+
+		String str = "abc"; --- 一个对象
+		String str = new String("abc"); --- 两个对象
+		String str = "a"; str += "b"; --- 五个对象
+
+		//已经定义好了一个字符串数组arr,包含了100个字符串
+		//如果需要把这100个字符串拼接成1个字符串
+		//使用+会额外产生多少个对象?
+		String result = ""; // 1
+		for(String str : arr){
+			result += str;//每拼接一次就要额外产生3个对象. 100 --- 300
+		}
+		//整个过程中额外产生了301个对象
+		//如果使用StingBuilder直接拼接结果,额外产生多少个对象?
+		StringBuilder sb = new StringBuilder();
+		for(String str : arr){
+			sb.append(str); // append一次产生1个对象. 100 --- 100
+		}
+		String str = sb.toString(); //1
+		//整个过程中额外产生了102个对象
+		如果拼接多个字符串的话,建议使用StringBuilder/StringBuffer
+		StringBuilder是一个线程不安全的类,StringBuffer是一个线程安全的类
+
+		练习:
+			1输入字符串,输出这个字符串中字母、数字以及其它符号的个数
+			2输入字符串,输出这个字符串中的所有的数字之和
+			3输入字符串,提取这个字符串中的数字并进行升序排序
+			4输入字符串,输出每个字符出现的次数

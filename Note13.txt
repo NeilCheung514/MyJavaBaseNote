@@ -1,0 +1,63 @@
+复习:
+	1.String:操作字符串但是不改变原字符串
+	2.Pattern:指定规则
+
+Pattern
+	split()---切割字符串
+
+包装类
+	针对每一种基本类型都提供对应的类类型,然后利用这些类产生的对象来便捷的操作对应的数据.
+	byte	short	int			long	float	double	char		boolean		void
+	Byte 	Short 	Integer		Long 	Float 	Double 	Character	Boolean 	Void
+	注意:Void本身是一个最终类,Void类是一个不可实例化的占位符,不能创建对象,必须有返回值null
+
+	将基本类型转化为对应的引用类型的对象---封箱
+	将基本类型直接赋值给引用类型---自动封箱,底层实际是调用了对应类身上的valueOf方法
+	将引用类型直接赋值给基本类型---自动拆箱,底层实际上调用了对应类身上的***Value方法
+	自动封箱/拆箱是JDK1.5的特性之一
+
+	将字符串转化为对应的字符  "c" -> 'c'	"c".charAt(0); char ch = "c".toCharArray()[0];
+
+	注意:八种包装类型对应的对象的哈希码是固定不变的.保证唯一性
+		true -> 1231; false -> 1237;
+
+	0.0/0; 0/0.0; 0.0/0.0 --- NaN
+	NaN的特性:和任何数据都不想等,包括它本身
+	Double.isNaN(double) --- 判断是否为NaN
+
+数学类
+	Math --- 最终类,值针对基本类型,提供了基本的数学运算,本身构造方法私有了,提供了大量的静态方法,
+	本身是作为一个完全的工具类来使用的
+	Math.E --- 自然底数
+	Math.PI --- 圆周率
+	ceil() --- 向上取整
+	floor() --- 向下取整
+	round() --- 四舍五入
+	random() --- 返回一个 [0,1) 随机小数
+
+BigDecimal --- 用于精确运算的类,需要将参数以字符串形式传递
+	subtract() --- 差运算
+	plus() --- 返回自身
+
+日期类:
+	Date---表示日期的对象,需要掌握将字符串转化为日期的方法---SimpleDateFormat中的parse方法,在转化的时候需要指定转化格式
+	Calendar---仅作了解
+
+	CST --- China Standard Time --- 中国标准时区
+
+	java.util.GregorianCalendar[time=1523946522417,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id="Asia/Shanghai",offset=28800000,dstSavings=0,useDaylight=false,transitions=19,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2018,MONTH=3,WEEK_OF_YEAR=16,WEEK_OF_MONTH=3,DAY_OF_MONTH=17,DAY_OF_YEAR=107,DAY_OF_WEEK=3,DAY_OF_WEEK_IN_MONTH=3,AM_PM=1,HOUR=2,HOUR_OF_DAY=14,MINUTE=28,SECOND=42,MILLISECOND=417,ZONE_OFFSET=28800000,DST_OFFSET=0]
+
+	WEEK_OF_MONTH=3 --- 不完全周的计算
+
+JDK8的部分内容
+	接口中的默认方法
+		从JDK1.8开始,允许在接口中定义的普通的实体方法,但是必须用default来修饰
+		也允许在接口中定义静态方法
+	Lambda表达式
+		(参数) -> {代码块};
+		用于去重写接口中的抽象方法
+		注意:要求能够使用Lambda表达式的接口中只能有一个抽象方法
+		如果接口中只有一个抽象方法,这个接口称之为函数式接口
+		不能用Object对象来接住Lambda表达式,除非强转
+	时间包
+		对时间体系重新划分,划分出来一个全新的时间包---java.time

@@ -1,0 +1,71 @@
+常见dos命令
+
+dir---展现指定目录下所有的子文件和子目录---directory
+mkdir---新建目录---make directory---md
+rmdir---删除目录---remove directory---从计算机中彻底移除,不可撤销---rd---要求删除的目录必须为空目录
+del---删除文件
+cls---清空屏幕---clear screen
+exit---退出命令提示符
+
+notepad---打开记事本
+calc---打开计算器
+mspaint---打开画图
+
+Java
+1995年SUN(斯坦福大学网络实验室)推出的
+Oak---James Gosling---Java之父---爪哇岛---JAVABean NetBean
+1.0->1.1->1.2(GUI)->1.3->1.4->1.5(Oracle)->6->7.0->1.8(十大特性)->1.9->10(18.3)
+J2SE/JAVASE---Standard Edition---标准版/基础版
+J2EE/JAVAEE---Enterprise Edition---企业版/商务版
+J2ME/JAVAME---Micro Edition---微型版/移动版---Android---Kotlin
+
+跨平台
+JVM(Java Virtual Machine)---Java虚拟机---将Java代码转化为对应的操作系统能够理解的指令---不同的操作系统有不同的虚拟机与之对应,同一段代码交给虚拟机之后,虚拟机再转化给操作系统---Java语言能够跨平台的前提是JVM---JVM不是跨平台的
+
+JDK,JRE,JVM
+JVM---Java Virtual Machine---是Java语言能够跨平台的条件
+JRE---Java Runtime Environment---Java运行时环境---JVM+核心类库
+JDK---Java Development Kit---Java开发工具包---开发工具+JRE
+www.oracle.com
+
+注意:安装路径不要出现空格
+
+src---source---源码
+
+将Java代码翻译成当前操作系统所理解的指令---编译---编译完成之后会产生一个class文件,这个文件称之为字节码文件---这个字节码文件就是给当前操作系统看的指令文件
+
+入门程序
+class Demo{
+	public static void main(String[] args){
+		System.out.println("Hello World !");
+	}
+}
+1.主函数public static void main(String[] args){}---是程序的入口
+2.class文件名和类名对应的---每一个类在编译完成之后会产生一个class文件
+3.如果一个类用public来修饰(公共类),那么要求这个类名和Java文件名要一致
+4.一个Java文件中可以定义多个类,但是只能有一个公共类
+5.如果添加了包名,在运行的时候需要先将class文件放到对应的包目录中,然后再java 包名.类名
+6.
+环境变量---给当前的操作系统指定命令的运行路径
+Path=%JAVA_HOME%/bin
+JAVA_HOME=D:\Java\jdk1.7.0_07
+
+关键字
+有特殊含义的单词
+在Java中一共有53个关键字---其中有2个关键字目前没有使用:goto,const---保留字
+
+标识符
+在程序中自定义的名称
+规则
+由字母,数字,_,$组成,但是不建议使用$
+Java支持中文命名,但是不建议
+数字不能开头
+不能使用关键字
+尽量见名知意
+
+驼峰命名法
+类名/接口名:如果由多个单词组成,要求每个单词的首字母大写---Work, PlayBasketball
+变量名/方法名:如果由多个单词组成,要求第二个单词开始首字母大写---work, playBasketball
+常量名:所有单词全部大写,每一个单词之间用_隔开---PLAY_BASKETBALL
+包名:所有单词全部小写,每一层包之间用.隔开---play.basketball
+
